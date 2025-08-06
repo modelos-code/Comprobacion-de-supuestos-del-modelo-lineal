@@ -42,27 +42,40 @@ Para reproducir la tabla con las medidas resumen primero debemos convertir la va
 
 **Figura 2**. Pasos para modificar la variable “sitio”.
 
-VA FIGURA 3
+<p align="center">
+  <img src="figuras/fig3.png" alt="Figura 3" width="500">
+</p>
+
 Figura 3. Ventana emergente en donde se culmina la conversión de la variable “sitio” a una variable categórica o factor denominada “sitioF”.
 ```r
 Kuehl4.1cangrejos <- within(Kuehl4.1cangrejos, {sitioF <- as.factor(sitio)})
 ```
 En la figura 3 se muestra cómo se genera una nueva variable llamada “sitioF”.  Esta nueva variable, a diferencia de la original “sitio”, es de tipo categórica o factor y tendrá seis categorías o niveles que son cada uno de los sitios de conteos de cangrejos. Con esta conversión lograremos obtener las medidas resumen para cada sitio. El inicio del proceso se describe en las figuras 4 y 5 en donde indicamos en “Resúmenes numéricos…” que vamos a utilizar como variable a describir a “conteo” pero clasificada por los sitios de medición. Como se ve en la figura 5 se debe no solo seleccionar “conteo” sino que también apretar el botón de “Resumir por grupos...”
 
-VA FIGURA 4
+<p align="center">
+  <img src="figuras/fig4.png" alt="Figura 4" width="500">
+</p>
 Figura 4. Resúmenes numéricos para obtener medidas descriptivas del conjunto de datos.
 
-VA FIGURA 5
+<p align="center">
+  <img src="figuras/fig5.png" alt="Figura 5" width="500">
+</p>
 Figura 5. Solapa “Datos” para seleccionar la variable “conteo” y “Resumir por grupos”.
 
-VA FIGURA 6
+<p align="center">
+  <img src="figuras/fig6.png" alt="Figura 6" width="500">
+</p>
 Figura 6. Selección de “sitioF” para que clasifique los resúmenes numéricos de conteos de cangrejos por cada sitio en donde fueron medidos.
 
-VA FIGURA 7
+<p align="center">
+  <img src="figuras/fig7.png" alt="Figura 7" width="500">
+</p>
 Figura 7. Visualización de que se está clasificando la información por sitios.
 La figura 6 muestra que vamos a tomar como variable clasificatoria a “sitiosF” y una vez que apretamos “Aceptar”, en la figura 7 vemos que ya está listo el proceso clasificatorio. Ahora debemos ir a la solapa “Estadísticos” para elegir las medidas deseadas.
 
-VA FIGURA 8
+<p align="center">
+  <img src="figuras/fig8.png" alt="Figura 8" width="500">
+</p>
 Figura 8. Elección de los estadísticos para terminar de elaborar la tabla con medidas de resumen.
 En la figura 8 elegimos “Media”, “Desviación típica”, los cuantiles “0” (mínimo), “.5” (mediana) y “1” (máximo). Con estas elecciones obtenemos la siguiente salida con la tabla resumen.
 ```r
@@ -84,11 +97,15 @@ Como puede notarse en la tabla, dentro de cada sitio, la media (columna “mean�
 
 Ajustaremos un modelo lineal, donde la variable respuesta es el conteo y la variable explicativa es un factor que contiene la identificación de los sitios. Las instrucciones de cómo hacerlo se pueden ver en las figuras 9 y 10.
 
-VA FIGURA 9
+<p align="center">
+  <img src="figuras/fig9.png" alt="Figura 9" width="500">
+</p>
 
 Figura 9. Primer paso para ajustar un modelo lineal.
 
-VA FIGURA 10
+<p align="center">
+  <img src="figuras/fig10.png" alt="Figura 10" width="500">
+</p>
 Figura 10. Ajuste del modelo lineal de la variable “conteo” en función de “sitiosF”.
 
 Los pasos para ajustar un modelo lineal del conteo en función de los sitios son relativamente sencillos. En la figura 9 se ve como se hace en un primer paso. En la figura 10, dejaremos el nombre del modelo por defecto, o sea “LinearModel.1” y, como se indica en la pantalla, haremos “doble clic” en las variables “conteo” y, luego de la virgulilla “~”, en el espacio en blanco, con el cursor haremos “doble click” en “sitiosF”. Así, obtendremos la siguiente salida:
