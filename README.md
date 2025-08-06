@@ -1,5 +1,6 @@
 # Comprobacion-de-supuestos-del-modelo-lineal
 Este documento brinda una guía útil y práctica para verificar si se satisfacen los supuestos de un modelo lineal clásico. Se pretende utilizar la menor sintaxis posible en la consola del Rcommander.
+
 Autores: Santiago Delgado, Silvina San Martino.
 
 # Introducción
@@ -22,14 +23,24 @@ conteo <- c(0, 0, 22, 3, 17, 0, 0, 7, 11, 11, 73, 33, 0, 65, 13, 44,
 Kuehl4.1cangrejos <- data.frame(sitio, conteo)
 ```
 # Activación del conjunto de datos en la consola del Rcmdr
-VA FIGURA 1
-Figura 1. Extracto de la pantalla superior del Rcmdr para activar el conjunto de datos generados
+
+<p align="center">
+  <img src="figuras/fig1.png" alt="Figura 1" width="500">
+</p>
+
+
+**Figura 1**. Extracto de la pantalla superior del Rcmdr para activar el conjunto de datos generados.
+
 Como se muestra en la figura 1, se debe pulsar con el cursor en “<No hay conjunto de datos activo>” para que aparezca una ventana emergente y nos deje seleccionar los datos del ejemplo. Con este paso se logra activarlo y dejarlo disponible para poder trabajar con él utilizando los recursos que provee la librería “Rcmdr”.
 
 # Medidas resumen
 Para reproducir la tabla con las medidas resumen primero debemos convertir la variable numérica “sitio” en una variable categórica o factor. Mostraremos los siguientes pasos con detalle en las figuras 2 y 3
-VA FIGURA 2
-Figura 2. Pasos para modificar la variable “sitio”.
+
+<p align="center">
+  <img src="figuras/fig2.png" alt="Figura 2" width="500">
+</p>
+
+**Figura 2**. Pasos para modificar la variable “sitio”.
 
 VA FIGURA 3
 Figura 3. Ventana emergente en donde se culmina la conversión de la variable “sitio” a una variable categórica o factor denominada “sitioF”.
