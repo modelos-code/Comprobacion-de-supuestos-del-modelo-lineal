@@ -141,7 +141,9 @@ Del ajuste del modelo, se obtiene cierta información resumida. En una primera i
 
 Se verificará si puede asumirse que los errores tienen una distribución normal con la misma varianza. Para ello, describiremos algunos métodos gráficos, basados en residuos, y la prueba de Levene como un método analítico para evaluar la igualdad de varianzas de los conteos de cangrejos para todos los sitios. Los pasos para obtener las gráficas básicas de diagnóstico se muestran a continuación:
 
-VA FIGURA 11
+<p align="center">
+  <img src="figuras/fig11.png" alt="Figura 11" width="500">
+</p>
 Figura 11. Pasos para obtener las gráficas de diagnóstico de modelo.
 
 ```r
@@ -149,7 +151,9 @@ oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
 plot(LinearModel.1)
 par(oldpar)
 ```
-VA FIGURA 12
+<p align="center">
+  <img src="figuras/fig12.png" alt="Figura 12" width="500">
+</p>
 Figura 12. Gráficas básicas de diagnóstico del modelo.
 
 Con la figura 11 se muestra en dos simples pasos como obtener las gráficas básicas de diagnóstico del modelo. La figura 12 nos muestra cuatro gráficos. A la izquierda arriba se grafica los residuales puros en función de los valores ajustados por el modelo que, en este caso, son las medias de conteos de cangrejos para cada sitio.  Se ve una tendencia a aumentar la variabilidad de los residuales (vista en un plano vertical) a medida que aumentan los valores predichos por el modelo. Se observa una desigualdad de varianzas entre los residuales de los diferentes sitios, encontrándose que a medida que aumenta el promedio de los conteos para sitio, aumenta también la variabilidad. También puede apreciarse que, por debajo de cero, los residuales tienden a concentrarse, mientras que, por encima de cero, están más dispersos y aparecen algunos residuales alejados con magnitudes grandes.  Como consecuencia de lo anterior, la distribución de los residuales no es simétrica. A la derecha arriba, se grafican los residuales (estudentizados, en este caso) en función de los correspondientes cuantiles teóricos. Como primer paso, se ordenan los residuales de forma creciente y a cada uno de ellos se le calcula su frecuencia relativa acumulada. Con esta última, se obtiene el cuantil de la distribución teórica correspondiente. Como se ve en esta gráfica, hay muchos residuales de valores altos que están muy por encima de la recta que los une a los cuantiles con iguales probabilidades acumuladas. Sus magnitudes son mucho más altas que las esperadas bajo normalidad y este patrón indica que hay sesgo hacia la derecha en la distribución. Como conclusión, no se cumple el supuesto de distribución Normal de los errores. A la izquierda abajo, se grafica la raíz cuadrada del valor absoluto de los residuales estudentizados en función de los valores ajustados por el modelo. La línea colorada une las medianas de estas raíces cuadradas. Si no hubiera heterogeneidad de varianzas encontraríamos una recta horizontal. En este caso, con esta gráfica se confirma que a medida que aumenta la media del sitio aumenta también la dispersión de los residuales. A la derecha abajo se grafican los residuales estudentizados en función de los sitios. Esta gráfica tiene como intención detectar las observaciones atípicas 
@@ -158,10 +162,14 @@ Con la figura 11 se muestra en dos simples pasos como obtener las gráficas bás
 
 Utilizaremos la prueba de Levene que en el ejemplo afirma en su hipótesis nula que las varianzas de los conteos de cangrejos son iguales para todos los sitios. Seguiremos los siguientes pasos en Rcmdr
 
-VA FIGURA 13
+<p align="center">
+  <img src="figuras/fig13.png" alt="Figura 13" width="500">
+</p>
 Figura 13. La prueba de Levene comienza desde la solapa “Estadísticos”.
 
-VA FIGURA 14
+<p align="center">
+  <img src="figuras/fig14.png" alt="Figura 14" width="500">
+</p>
 Figura 14. Se toma como centro la “mediana”.
 ```r
 tapply(conteo ~ sitioF, var, na.action=na.omit, data=Kuehl4.1cangrejos) # variances by group
@@ -197,10 +205,14 @@ $\lambda$: es el parámetro de la transformación
 
 Para realizar esta transformación se deberá cargar la librería “MASS”. Una de las formas de cargar una librería se muestra a continuación
 
-VA FIGURA 15
+<p align="center">
+  <img src="figuras/fig15.png" alt="Figura 15" width="500">
+</p>
 Figura 15. Carga de una librería.
 
-VA FIGURA 16
+<p align="center">
+  <img src="figuras/fig16.png" alt="Figura 16" width="500">
+</p>
 Figura 16. Carga de la librería “MASS”.
 Una vez cargado el paquete se deberán escribir las siguientes sentencias en la ventana de instrucciones en el “Rcommander”. Se obtendrá una gráfica con la estimación de λ.
 ```r
@@ -208,16 +220,22 @@ library(MASS)
 boxcox((Kuehl4.1cangrejos$conteo+1/6)~1, lambda = seq(-0.75, 0.75, length = 10))
 abline(v=0.01)
 ```
-VA FIGURA 17
+<p align="center">
+  <img src="figuras/fig17.png" alt="Figura 17" width="500">
+</p>
 Figura 17. Estimación de Lambda.
 En este ejemplo, vemos que la estimación de λ se encuentra alrededor del cero (figura 17). Pero puede suceder, en otros ejemplos, que la estimación de λ tome otros valores. Dichos valores pueden ajustarse con el argumento “seq” de la sentencia “boxcox” anteriormente mostrada.
 
 La línea vertical negra de la figura 17 marca el valor 0,01. Esta estimación de λ está muy cerca del valor “0”. Más aún, como el intervalo con un 95% de confianza para λ (delimitado por las líneas punteadas negras verticales) contiene al “0”, podemos asumir que dicho parámetro toma ese valor. Por lo tanto, procederemos a transformar la variable “conteo” con la función logarítmica. No se podrá tomar la transformación como tal sobre dicha variable ya que hay algunos conteos de cangrejos que toman valor “0” y no es posible obtener el logaritmo del mismo.  Entonces, a cada valor del conteo se le sumará una constante de magnitud muy pequeña (1/6) para poder utilizar logaritmo natural.  Con estas acciones, que se muestran en las figuras 17 y 18, estaremos listos para ajustar un nuevo modelo y volver a hacer una comprobación de supuestos. 
 
-VA FIGURA 18
+<p align="center">
+  <img src="figuras/fig18.png" alt="Figura 18" width="500">
+</p>
 Figura 18. La transformación de la variable conteo comienza con la solapa “Datos”.
 
-VA FIGURA 19
+<p align="center">
+  <img src="figuras/fig19.png" alt="Figura 19" width="500">
+</p>
 Figura 19. La nueva variable se llama “conteot”.
 ```r
 Kuehl4.1cangrejos$conteot <- with(Kuehl4.1cangrejos, log(conteo+1/6))
@@ -227,7 +245,9 @@ Kuehl4.1cangrejos$conteot <- with(Kuehl4.1cangrejos, log(conteo+1/6))
 
 El primer paso para ajustar el nuevo modelo lineal se mostró en la figura 9. El nuevo modelo tendrá como variable respuesta “conteot”. Como se muestra en la figura 20, dejaremos por defecto el nombre del modelo como “LinearModel.2”
 
-VA FIGURA 20
+<p align="center">
+  <img src="figuras/fig20.png" alt="Figura 20" width="500">
+</p>
 Figura 20. Ajuste del modelo con la variable transformada.
 ```r
 LinearModel.2 <- lm(conteot ~ sitioF, data=Kuehl4.1cangrejos)
@@ -263,7 +283,9 @@ oldpar <- par(oma=c(0,0,3,0), mfrow=c(2,2))
 plot(LinearModel.2)
 par(oldpar)
 ```
-VA FIGURA 21
+<p align="center">
+  <img src="figuras/fig21.png" alt="Figura 21" width="500">
+</p>
 Figura 21. Gráfica de diagnóstico del modelo con la variable transformada.
 
 A la izquierda arriba, la gráfica nos muestra que ya no crece la variabilidad de los residuales a medida que aumentan las medias de la transformación de los conteos. Además, la distribución de los mismos pareciera estar de forma simétrica. A la derecha arriba, se observa una mejor correspondencia entre la distribución de los residuales estudentizados con respecto a los cuantiles de la distribución teórica. A la izquierda abajo podemos concluir mediante esa gráfica que la transformación de la variable conteo ha logrado homogeneizar las varianzas de los residuales de los diferentes sitios.
@@ -288,12 +310,16 @@ Ahora podemos probar la hipótesis de que las medias de los conteos transformado
 
 Los pasos en “Rcommander” para continuar con el análisis es relativamente sencillo. Se muestra a continuación como con muy pocas operaciones con el cursor se logra completar el análisis
 
-VA FIGURA 22
+<p align="center">
+  <img src="figuras/fig22.png" alt="Figura 22" width="500">
+</p>2
 Figura 22. Pasos para realizar el análisis de la varianza.
 
 Con los pasos mostrados en la figura 22 podremos realizar un análisis de la varianza y también nos dará más opciones de análisis. Una de ellas es las comparaciones múltiples de medias en caso de que el efecto de los sitios sobre los conteos transformados sea significativo.
 
-VA FIGURA 23
+<p align="center">
+  <img src="figuras/fig23.png" alt="Figura 23" width="500">
+</p>
 Figura 23. Análisis de varianza para un factor.
 En la figura 23 se ajusta un nuevo modelo llamado “AnovaModel.1”, se elige la variable “conteot” y se la analiza en función de “sitioF”. Por último, se tilda en “Comparaciones de dos a dos de las medias” para que realice las comparaciones múltiples de promedios estilo Tukey.
 ```r
@@ -400,10 +426,14 @@ En esta sección mostraremos una alternativa a la transformación de la variable
 
 Siguiendo con la idea principal de este documento, con la menor sintaxis posible y mayoritariamente usando las herramientas que ofrece el “Rcommander”, los pasos para ajustar un modelo de este tipo son muy parecidos al de los modelos lineales.  Se muestra en la figura 24 que el proceso comienza en la solapa “Estadísticos” opción “Ajuste de modelos”. Luego de haber seleccionado “Modelo lineal generalizado…” aparecerá una ventana como se ve en la figura 25. En ella dejaremos por defecto el nombre del modelo “GLM.1”, ajustaremos la variable “conteo” en función de “sitioF” y, para finalizar, elegiremos la familia “Poisson” con la salvedad de hacer un “doble click” en ella, así el programa elige por defecto la función de enlace “log”.
 
-VA FIGURA 24
+<p align="center">
+  <img src="figuras/fig24.png" alt="Figura 24" width="500">
+</p>
 Figura 24. Pasos para ajustar un modelo lineal generalizado.
 
-VA FIGURA 25
+<p align="center">
+  <img src="figuras/fig25.png" alt="Figura 25" width="500">
+</p>
 Figura 25. Ajuste de un modelo lineal generalizado.
 
 ```r
@@ -449,7 +479,9 @@ library(hnp, pos=22)
 hnp(GLM.1)
 ## Poisson model
 ```
-VA FIGURA 26
+<p align="center">
+  <img src="figuras/fig26.png" alt="Figura 26" width="500">
+</p>
 Figura 26. Gráfica de residuales del modelo lineal generalizado con distribución Poisson.
 Como se observa en la figura 26 no se corresponden los residuales con los cuantiles teóricos. Vemos un total alejamiento y muy marcado entre ambas variables. Los residuales no se ubican dentro de las bandas de confianza esperables para los cuantiles teóricos. Se descarta este modelo y se procede a probar otros con la familia de distribución “binomial negativa” y “cuasipoisson”. Ambas distribuciones también son utilizadas para variables aleatorias de este tipo. La distribución de probabilidades Poisson asume que la media es igual a la varianza, probablemente es por ello que el modelo ajustado no haya sido bueno. La distribución binomial negativa asume que las varianzas son mayores a las medias. Con el ajuste de modelos lineales generalizados con estas dos últimas distribuciones mencionadas, se pueden modelar esos aumentos de las varianzas a medida que crecen los valores medios. A continuación del ajuste de los modelos también se realizarán las gráficas de diagnóstico. Las sentencias son relativamente sencillas y se muestran a continuación.
 ```r
@@ -496,14 +528,18 @@ En el resumen del nuevo modelo vemos una notable mejoría ya que el valor de “
 hnp(GLM.2)
 ## Negative binomial model (using MASS package)
 ```
-VA FIGURA 27
+<p align="center">
+  <img src="figuras/fig27.png" alt="Figura 27" width="500">
+</p>
 
 Figura 27. Gráfica de residuales del modelo lineal generalizado con distribución binomial negativa.
 Tal como se preveía en el resumen del modelo GLM.2, en la figura 27 se muestra una gran concordancia entre los residuales y los cuantiles teóricos. Si bien hay residuales de menor magnitud que están por fuera de las bandas de confianza, la mejoría es muy notable.
 
 A continuación, probaremos un tercer modelo lineal generalizado con distribución quasipoisson y con función de ligadura logaritmo natural. Los pasos son similares a los que se muestran en las figuras 24 y 25.
 
-VA FIGURA 28
+<p align="center">
+  <img src="figuras/fig28.png" alt="Figura 28" width="500">
+</p>
 Figura 28. Ajuste de un modelo lineal generalizado con familia “quasipoisson”.
 ```r
 GLM.3 <- glm(conteo ~ sitioF, family=quasipoisson(log), data=Kuehl4.1cangrejos)
@@ -544,7 +580,9 @@ A este modelo en particular no le compararemos la “Residual deviance” con lo
 hnp(GLM.3)
 ## Quasi-Poisson model
 ```
-VA FIGURA 29
+<p align="center">
+  <img src="figuras/fig29.png" alt="Figura 29" width="500">
+</p>
 Figura 29. Gráfica de residuales del modelo lineal generalizado con la familia quasipoisson.
 Los mejores modelos lineales generalizados ajustados son el segundo y el tercero. En este último, casi la totalidad de sus residuales se encuentra dentro de las bandas de confianza (figura 29). Decidimos quedarnos con el segundo modelo ya que contamos también con criterios de información como la “Residual deviance” y el AIC. Con este modelo realizaremos las comparaciones múltiples de medias. Cargaremos los paquetes “emmeans” y “multcomp” como se indica en la figura 15 y luego se utilizarán las siguientes sentencias:
 
