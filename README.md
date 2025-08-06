@@ -514,7 +514,7 @@ exp(coef(GLM.1))  # Exponentiated coefficients
 
 Luego de ajustar el modelo lineal generalizado observamos mucha información, pero solo nos focalizaremos en el final del resumen. Allí notamos que la deviance residual (“Residual deviance”: 10243) es mucho mayor que los grados de libertad (“degrees of freedom”, 144). Esto último significa que el modelo no es bueno y para corroborar esto realizaremos una gráfica de residuales.
 
-En primer lugar, cargaremos la librería “hnp” de la misma forma que se indicó en la figura 15. Luego con la sentencia “hnp” obtendremos una gráfica de los residuales en función de los cuantiles teóricos.
+En primer lugar, cargaremos la librería “hnp” de la misma forma que se indicó en la figura 15. Luego con la función “hnp” obtendremos una gráfica de los residuales en función de los cuantiles teóricos.
 
 ```r
 library(hnp, pos=22)
@@ -527,7 +527,7 @@ hnp(GLM.1)
 
 **Figura 26**. Gráfica de residuales del modelo lineal generalizado con distribución Poisson.
 
-Como se observa en la figura 26 no se corresponden los residuales con los cuantiles teóricos. Vemos un total alejamiento y muy marcado entre ambas variables. Los residuales no se ubican dentro de las bandas de confianza esperables para los cuantiles teóricos. Se descarta este modelo y se procede a probar otros con la familia de distribución “binomial negativa” y “cuasipoisson”. Ambas distribuciones también son utilizadas para variables aleatorias de este tipo. La distribución de probabilidades Poisson asume que la media es igual a la varianza, probablemente es por ello que el modelo ajustado no haya sido bueno. La distribución binomial negativa asume que las varianzas son mayores a las medias. Con el ajuste de modelos lineales generalizados con estas dos últimas distribuciones mencionadas, se pueden modelar esos aumentos de las varianzas a medida que crecen los valores medios. A continuación del ajuste de los modelos también se realizarán las gráficas de diagnóstico. Las sentencias son relativamente sencillas y se muestran a continuación.
+Como se observa en la figura 26 no se corresponden los residuales con los cuantiles teóricos. Vemos un total alejamiento y muy marcado entre ambas variables. Los residuales no se ubican dentro de las bandas de confianza esperables para los cuantiles teóricos. Se descarta este modelo y se procede a probar otros con la familia de distribución “binomial negativa” y “cuasipoisson”. Ambas distribuciones también son utilizadas para variables aleatorias de este tipo. En una distribución de probabilidades Poisson la media es igual a la varianza, probablemente es por ello que el modelo ajustado no haya sido bueno. La distribución binomial negativa asume que las varianzas son mayores a las medias. Con el ajuste de modelos lineales generalizados con estas dos últimas distribuciones mencionadas, se pueden modelar esos aumentos de las varianzas a medida que crecen los valores medios. A continuación del ajuste de los modelos también se realizarán las gráficas de diagnóstico. Las sentencias son relativamente sencillas y se muestran a continuación.
 
 ```r
 GLM.2 <- glm.nb (conteo~sitioF, data=Kuehl4.1cangrejos)
