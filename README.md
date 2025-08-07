@@ -1,7 +1,7 @@
 # Comprobacion-de-supuestos-del-modelo-lineal
 Este documento brinda una guía útil y práctica para verificar si se satisfacen los supuestos de un modelo lineal clásico. Se pretende utilizar la menor sintaxis posible en la consola del Rcommander.
 
-Autores: Santiago Delgado, Silvina San Martino.
+Autores: Santiago Delgado, Silvina San Martino, María Gloria Monterubbianesi.
 
 # Introducción
 Este documento fue elaborado para que pueda ser utilizado por estudiantes de posgrado en agronomía y ciencias afines. Nuestro propósito es brindar una guía útil y práctica para verificar si se satisfacen los supuestos de un modelo lineal clásico. Se utilizará un ejemplo muy común y ampliamente difundido en la bibliografía, en el cual la distribución de probabilidad de los residuales no es simétrica y la igualdad de varianzas de los tratamientos no se cumple. Se pretende utilizar la menor sintaxis posible en la consola del “Rcommander” y aplicar los conceptos estadísticos para dar interpretaciones en esta situación particular. Asimismo, se puede reproducir lo propuesto en este ejemplo a diseños similares que se lleven a cabo en investigaciones agronómicas.
